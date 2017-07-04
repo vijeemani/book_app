@@ -1,5 +1,7 @@
 package com.rev.pubhub.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rev.pubhub.form.RegistrationValidation;
+import com.rev.pubhub.model.Order;
 import com.rev.pubhub.model.User;
 import com.rev.pubhub.service.BookService;
 import com.rev.pubhub.service.OrderItemService;
@@ -90,7 +93,8 @@ public class UserController {
 			Long countValueBook =bookService.bookCount();
 			Long countValueOrder =orderService.orderCount();
 			Long countValueOrderItem =orderIService.orderItemCount();
-			
+			List<Order> listOfOrders = orderService.orderList();
+			modelMap.addAttribute("DELIVERED_ITEM", listOfOrders);
 			
 			 modelMap.addAttribute("USER_COUNT",countValueUser);
 			 modelMap.addAttribute("BOOK_COUNT",countValueBook);

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.rev.pubhub.jsp.OrderRepository;
 import com.rev.pubhub.model.Order;
+import com.rev.pubhub.model.User;
 
 @Service
 public class OrderService {
@@ -44,6 +45,24 @@ public class OrderService {
 		
 		}
 	
-	//public Order saveReason()
+	public List<Order> orderList(){
+		
+		if(orderRepository.countByStatus("DELIVERED")!=null){
+			
+			return orderRepository.findByStatus("DELIVERED");
+		}
+		else{
+			return null;
+				
+		}
+		
+		
+	}
+	
+	public List<Order> adminOrderList(){
+		  
+		return orderRepository.find();
+	}
+	
 	
 }
