@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 //import com.rev.pubhub.jsp.UserRepository;
 import com.rev.pubhub.model.Order;
+import com.rev.pubhub.model.OrderItem;
 import com.rev.pubhub.model.User;
 import com.rev.pubhub.service.*;
 
@@ -65,12 +66,35 @@ public class AdminController {
 		return "adminpages/admin_order";
 
 	}
+	
+	@GetMapping("/orderItemList")
+	public String orderItemList(ModelMap modelMap, HttpSession session) {
+		Long countValueOrderItem = orderIService.orderItemCount();
+		List<OrderItem> listOfOrderItems = orderIService.orderItemList();
+		modelMap.addAttribute("ORDER_ITEM", listOfOrderItems);
+		modelMap.addAttribute("ORDER_ITEM_COUNT", countValueOrderItem);
+
+		return "adminpages/admin_order_item";
+
+	}
 
 	
 	@GetMapping("/salesReport")
-	public String sales() {
-
-		return null;
+	public String sales(ModelMap modelMap) {
+		Long countValueUser = userService.userCount();
+		Long countValueBook = bookService.bookCount();
+		Long countValueOrder = orderService.orderCount();
+		Long countValueOrderItem = orderIService.orderItemCount();
+	//	Number maxBookSold =  orderIService.maxOrdered();
+		
+		
+		modelMap.addAttribute("USER_COUNT", countValueUser);
+		modelMap.addAttribute("BOOK_COUNT", countValueBook);
+		modelMap.addAttribute("ORDER_COUNT", countValueOrder);
+		modelMap.addAttribute("ORDER_ITEM_COUNT", countValueOrderItem);
+		//modelMap.addAttribute("MAX_BOOK", maxBookSold);
+		
+		return "adminpages/admin_analysis";
 
 	}
 

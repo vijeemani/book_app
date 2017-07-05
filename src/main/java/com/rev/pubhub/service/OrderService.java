@@ -58,6 +58,10 @@ public class OrderService {
 		
 		
 	}
+	public List<Order> adminOrderList() {
+		// TODO Auto-generated method stub
+		return orderRepository.findAll();
+	}
 	
 
 	

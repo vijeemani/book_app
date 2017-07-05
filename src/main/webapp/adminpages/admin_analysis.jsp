@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,10 +30,13 @@
 				role="navigation" style="margin-top: 20px">
 				<ul class="nav flex-column pl-1">
 					<li class="nav-item"><a class="nav-link" href="#">Overview</a></li>
-					<li class="nav-item"><a class="nav-link" href="../admin/salesReport">Analytics</a></li>
-					<li class="nav-item"><a class="nav-link" href="../admin/orderList">Orders </a></li>
-					<li class="nav-item"><a class="nav-link" href="../admin/userList">Users</a></li>
-					<li class="nav-item"><a class="nav-link" href="../admin/orderItemList">orderItems</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="../admin/orderList">Orders </a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="../admin/userList">Users</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="../admin/orderItemList">orderItems</a></li>
 				</ul>
 			</div>
 			<!--/col-->
@@ -46,7 +49,7 @@
             </p>-->
 
 				<h4>
-					<b>Admin Dashboard </b>
+					<b>Admin Analysis Board </b>
 				</h4>
 
 				<div class="row mb-3" style="margin-top: 50px">
@@ -65,7 +68,7 @@
 						<div class="card card-inverse card-danger">
 							<div class="card-block bg-danger">
 								<div class="rotate">
-									<i class="fa fa-list fa-4x"></i>
+									<i class="fa fa-book fa-4x"></i>
 								</div>
 								<h6 class="text-uppercase">Books</h6>
 								<h1 class="display-1">${BOOK_COUNT}</h1>
@@ -76,7 +79,7 @@
 						<div class="card card-inverse card-info">
 							<div class="card-block bg-info">
 								<div class="rotate">
-									<i class="fa fa-twitter fa-5x"></i>
+									<i class="fa fa-dropbox fa-5x"></i>
 								</div>
 								<h6 class="text-uppercase">DELIVERED BOOKS</h6>
 								<h1 class="display-1">${ORDER_COUNT}</h1>
@@ -84,13 +87,53 @@
 						</div>
 					</div>
 					<div class="col-xl-3 col-lg-6">
-						<div class="card card-inverse card-warning">
-							<div class="card-block bg-warning">
+						<div class="card card-inverse card-primary">
+							<div class="card-block bg-primary">
+								<div class="rotate">
+									<i class="fa fa-cart-arrow-down fa-5x"></i>
+								</div>
+								<h6 class="text-uppercase">ORDERED ITEMS</h6>
+								<h1 class="display-1">${ORDER_ITEM_COUNT}</h1>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-6" style="margin-top: 50px">
+						<div class="card card-inverse card-primary">
+							<div class="card-block bg-primary">
+								<div class="rotate">
+									<i class="	fa fa-level-up fa-5x"></i>
+								</div>
+								<h6 class="text-uppercase">Book MaximumOrdered</h6>
+								<h1 class="display-1">${MAX_BOOK}</h1>
+								<a class="fa fa-arrow-circle-right" href="#" style="color: #fff">View
+									Details</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-6" style="margin-top: 50px">
+						<div class="card card-inverse card-danger">
+							<div class="card-block bg-danger">
+								<div class="rotate">
+									<i class="	fa fa-level-down fa-5x"></i>
+								</div>
+								<h6 class="text-uppercase">BOOK LEAST ORDERED</h6>
+								<h1 class="display-1">${ORDER_ITEM_COUNT}</h1>
+								<a class="fa fa-arrow-circle-right" href="#" style="color: #fff">View
+									Details</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-6" style="margin-top: 50px">
+						<div class="card card-inverse card-success">
+							<div class="card-block bg-success">
 								<div class="rotate">
 									<i class="fa fa-share fa-5x"></i>
 								</div>
-								<h6 class="text-uppercase">ORDERED ITEMS </h6>
+								<h6 class="text-uppercase">TOTAL BOOK SOLD</h6>
 								<h1 class="display-1">${ORDER_ITEM_COUNT}</h1>
+								<a class="fa fa-arrow-circle-right" href="#" style="color: #fff">View
+									Details</a>
 							</div>
 						</div>
 					</div>
@@ -99,50 +142,7 @@
 
 				<hr>
 
-				<a id="features"></a>
-				<hr>
-				<p class="lead mt-5">The Ordered Items list is given below</p>
-				<div class="row my-4">
-					<div class="col-lg-3 col-md-4">
-						<div class="card">
-							<img class="card-img-top img-fluid"
-								src="//placehold.it/740x180/bbb/fff?text=..."
-								alt="Card image cap">
-							<div class="card-block">
-								<h4 class="card-title">OrderList</h4>
-								<p class="card-text">The delivered books.</p>
 
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-9 col-md-8">
-					<div class="table-responsive">
-							<table class="table table-striped">
-							<thead class="thead-inverse">
-								<tr>
-									<th>Order Number</th>
-									<th>Total Amount</th>
-									<th>status</th>
-									<th>date of delivery</th>
-									
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${DELIVERED_ITEM}" var="del">
-								<tr>
-									<td>${del.id}</td>
-									<td>Rs. ${del.totalPrice}
-									<td>${del.status}</td>
-									<td>${del.deliveredDate}</td>
-									
-								</tr>
-							</c:forEach>	
-							</tbody>
-							
-						</table>
-					</div>
-				</div>
 			</div>
 
 			<!--/card-columns-->
@@ -152,7 +152,11 @@
 		<!--/main col-->
 	</div>
 
-	
+	<!--/.container-->
+	<footer class="container-fluid">
+	<p class="text-right small">©2016-2017 Company</p>
+	</footer>
+
 
 	<!--scripts loaded here-->
 

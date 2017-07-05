@@ -17,7 +17,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 	public List<Order> findByStatus(String string);
 	
 	
-	public List<Order>  findUserIdDistinctAll();
+	//public List<Order>  findUserIdDistinctAll();
 
 
 
