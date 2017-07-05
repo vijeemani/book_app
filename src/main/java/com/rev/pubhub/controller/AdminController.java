@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.rev.pubhub.jsp.OrderItemRepository;
 //import com.rev.pubhub.jsp.UserRepository;
 import com.rev.pubhub.model.Order;
 import com.rev.pubhub.model.OrderItem;
@@ -28,6 +29,9 @@ public class AdminController {
 	OrderService orderService;
 	@Autowired
 	OrderItemService orderIService;
+	
+	@Autowired
+	OrderItemRepository itrepo;
 
 	@GetMapping("/home")
 	public String reReturn(ModelMap modelMap) {
@@ -85,14 +89,14 @@ public class AdminController {
 		Long countValueBook = bookService.bookCount();
 		Long countValueOrder = orderService.orderCount();
 		Long countValueOrderItem = orderIService.orderItemCount();
-	//	Number maxBookSold =  orderIService.maxOrdered();
+	Long maxBookSold =  itrepo.getMaxId();
 		
 		
 		modelMap.addAttribute("USER_COUNT", countValueUser);
 		modelMap.addAttribute("BOOK_COUNT", countValueBook);
 		modelMap.addAttribute("ORDER_COUNT", countValueOrder);
 		modelMap.addAttribute("ORDER_ITEM_COUNT", countValueOrderItem);
-		//modelMap.addAttribute("MAX_BOOK", maxBookSold);
+		modelMap.addAttribute("MAX_BOOK", maxBookSold);
 		
 		return "adminpages/admin_analysis";
 
