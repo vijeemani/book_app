@@ -59,10 +59,7 @@ public class OrderService {
 		
 	}
 	
-	public List<Order> adminOrderList(){
-		  
-		return orderRepository.find();
-	}
+
 	
 	
 }
