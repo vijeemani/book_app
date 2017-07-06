@@ -1,4 +1,4 @@
-package com.rev.pubhub.jsp;
+package com.rev.pubhub.repo;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
 	@Query("SELECT max(book.id) FROM OrderItem ")
 	Long getMaxId();
 	
-	@Query("SELECT max(book.id) FROM OrderItem ")
+	@Query("SELECT min(book.id) FROM OrderItem ")
 	Long getMinId();
 	
 }

@@ -1,4 +1,4 @@
-package com.rev.pubhub.jsp;
+package com.rev.pubhub.repo;
 
 import java.util.List;
 

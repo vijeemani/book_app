@@ -8,9 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rev.pubhub.form.RegistrationValidation;
-import com.rev.pubhub.jsp.BookRepository;
-import com.rev.pubhub.jsp.UserRepository;
-import com.rev.pubhub.jsp.*;
+import com.rev.pubhub.repo.BookRepository;
+import com.rev.pubhub.repo.UserRepository;
+import com.rev.pubhub.repo.*;
 import com.rev.pubhub.model.Order;
 import com.rev.pubhub.model.User;
 import com.rev.pubhub.util.EmailUtil;

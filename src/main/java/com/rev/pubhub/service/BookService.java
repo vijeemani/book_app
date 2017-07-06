@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rev.pubhub.jsp.BookRepository;
+import com.rev.pubhub.repo.BookRepository;
 import com.rev.pubhub.model.Book;
 
 @Service
