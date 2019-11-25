@@ -10,7 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.rev.pubhub.jsp.OrderItemRepository;
+import com.rev.pubhub.repo.OrderItemRepository;
 //import com.rev.pubhub.jsp.UserRepository;
 import com.rev.pubhub.model.Order;
 import com.rev.pubhub.model.OrderItem;

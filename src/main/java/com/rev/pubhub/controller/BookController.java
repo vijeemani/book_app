@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.rev.pubhub.jsp.BookRepository;
-import com.rev.pubhub.jsp.UserRepository;
+import com.rev.pubhub.repo.BookRepository;
+import com.rev.pubhub.repo.UserRepository;
 import com.rev.pubhub.model.Book;
 import com.rev.pubhub.model.User;
 import com.rev.pubhub.service.BookService;

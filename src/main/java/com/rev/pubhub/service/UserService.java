@@ -49,7 +49,7 @@ public class UserService {
 		// Send Registration Notification Mail
 		String subject = "Your account has been created";
 		String body = Rvalidate .getName()+"Welcome to pubhub ! You can login to your account !";
-		eMail.send(Rvalidate.getEmail(), subject, body);
+		//eMail.send(Rvalidate.getEmail(), subject, body);
 		
 
 	}
